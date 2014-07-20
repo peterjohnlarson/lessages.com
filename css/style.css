@@ -1,42 +1,80 @@
 html { height: 100%; font-size: 62.5%; }
 
-body { height: 100%; font-family: 'Lato'; font-size: 1.6rem; }
-
-header { 
-    height: 100%; width: 100%; 
+body { 
+    height: 100%; 
+    font-family: 'Lato'; 
+    font-size: 1.6rem; 
     background: url(../img/header-bg.jpg) center center; 
-    background-size: cover; 
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body:before {
+    content: '';
+    display: block;
+    width: 100%; height: 100%;
+    background: #25243b;
+    opacity: .8;
+    overflow: hidden;
+}
+
+header {
     text-align: center;
     color: white;
     font-size: 2.4rem;
     text-transform: uppercase;
 }
 
-header:before {
-    content: '';
-    display: block;
-    width: 100%; height: 100%;
-    background: #25243b;
-    opacity: .8;
+
+header {
     position: absolute;
-
-}
-
-header h1, header p {
-    position: relative;
+    width: 100%;
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    z-index: 0;
 }
 
 header h1 {
-    display: inline;
+    display: inline-block;
     font-weight: 100;
     font-size: 10.0rem;
-    border: .2rem solid white;
+    line-height: 13rem;
+    border: 0.2rem solid white;
+    padding: 0 2.7rem 0.8rem;
 }
 
 header p {
     opacity: .35;
+    margin-top: 2.2rem;
+    margin-bottom: -2.4rem;
+}
+
+body > nav {
+    background: rgba(37,36,56,.95);
+    text-align: center;
+    font-size: 1.8rem;
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+    margin-bottom: -8rem;
+}
+
+body > nav a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 8rem;
+    padding: 0 1.7rem;
+}
+
+body > nav a.active { background: #0073b8; }
+
+body > section {
+    background: rgba(255,255,255,1);
+    min-height: 500px;
+    position: relative;
+    z-index: 1;
 }
