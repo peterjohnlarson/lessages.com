@@ -23,10 +23,6 @@ header {
     color: white;
     font-size: 2.4rem;
     text-transform: uppercase;
-}
-
-
-header {
     position: absolute;
     width: 100%;
     top: 50%;
@@ -51,6 +47,17 @@ header p {
     margin-bottom: -2.4rem;
 }
 
+body > a.continue {
+    display: block;
+    height: 4rem;
+    width: 4rem;
+    background: url(../img/down-arrow.svg);
+    background-size: cover;
+    position: absolute;
+    left: 50%; margin-left: -2rem;
+    bottom: 10%; margin-bottom: -2rem;
+}
+
 body > nav {
     background: rgba(37,36,56,.95);
     text-align: center;
@@ -60,13 +67,18 @@ body > nav {
     z-index: 1000;
     margin-bottom: -8rem;
 }
+body > nav.sticky {
+    position: fixed;
+    top: 0;
+    margin-bottom: 0;
+}
 
 body > nav a {
     display: inline-block;
     color: white;
     text-decoration: none;
     text-transform: uppercase;
-    line-height: 8rem;
+    line-height: 8.0rem;
     padding: 0 1.7rem;
 }
 
@@ -74,7 +86,8 @@ body > nav a.active { background: #0073b8; }
 
 body > section {
     background: rgba(255,255,255,1);
-    min-height: 500px;
+    min-height: 1000px;
     position: relative;
     z-index: 1;
+    padding-top: 8.0rem
 }
