@@ -1,0 +1,42 @@
+html { height: 100%; font-size: 62.5%; }
+
+body { height: 100%; font-family: 'Lato'; font-size: 1.6rem; }
+
+header { 
+    height: 100%; width: 100%; 
+    background: url(../img/header-bg.jpg) center center; 
+    background-size: cover; 
+    text-align: center;
+    color: white;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+}
+
+header:before {
+    content: '';
+    display: block;
+    width: 100%; height: 100%;
+    background: #25243b;
+    opacity: .8;
+    position: absolute;
+
+}
+
+header h1, header p {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+header h1 {
+    display: inline;
+    font-weight: 100;
+    font-size: 10.0rem;
+    border: .2rem solid white;
+}
+
+header p {
+    opacity: .35;
+}
