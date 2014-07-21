@@ -20,6 +20,20 @@ $(function() {
             nav.removeClass('sticky');
         }
     });
+
+    $('body > section').waypoint(function(direction){
+        if(direction == 'down'){
+            $('body > nav a').each(function(){
+                $(this).removeClass('active');
+            });
+            $('body > nav a[data-sect="' + $(this).attr('id') + '"]').addClass('active');
+        } else if(direction == 'up'){
+            $('body > nav a').each(function(){
+                $(this).removeClass('active');
+            });
+            $('body > nav a[data-sect="' + $(this).prev().attr('id') + '"]').addClass('active');
+        }
+    });
 });
 
 function placeNav(){

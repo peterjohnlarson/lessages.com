@@ -1,4 +1,4 @@
-html { height: 100%; font-size: 62.5%; }
+html { height: 100%; font-size: 62.5%; } /*62.5% for pixel-like sizing*/
 
 body { 
     height: 100%; 
@@ -86,8 +86,10 @@ body > nav a.active { background: #0073b8; }
 
 body > section {
     background: rgba(255,255,255,1);
-    min-height: 1000px;
+    box-sizing: border-box;
+    min-height: 100%;
     position: relative;
     z-index: 1;
-    padding-top: 8.0rem
+    padding-top: 8.0rem;
+    border-bottom: solid 1.0rem rgba(0,0,0,.1);
 }
