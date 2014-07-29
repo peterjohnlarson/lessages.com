@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/waypoints.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
@@ -26,26 +28,18 @@
         <a data-sect="links" href="/links/">Links</a>
     </nav>
 
-    <section id="music">
-        <div class="inner-wrapper">
+    <section ng-app="ls-music" id="music">
+        <div ng-controller="MusicCtrl as music" class="inner-wrapper">
             <h1>Music</h1>
             <nav>
-                <a href="#album2013" title="Blood Harmony" class="active"></a>
-                <a href="#album2011" title="Share This"></a>
-                <a href="#album2008" title="Animals"></a>
+                <a ng-repeat='(id, album) in music.albums' ng-class="{ active:music.tab === id }" ng-click="music.tab = id"  title="{{album.title}}" bg-img="{{album.small_art_url}}"></a>
             </nav>
-            <section>
-                <a href="img/blood-harmony.png"></a>
+            <section ng-repeat='(id, album) in music.albums' ng-show="music.tab === id" id="{{id}}">
+                <a href="{{album.large_art_url}}" bg-img="{{album.large_art_url}}"></a>
                 
-                <h1>Blood Harmony <span class="year">(2013)</span></h1>
+                <h1>{{album.title}} <span class="year">({{ album.release_date * 1000 | date : 'yyyy' }})</span></h1>
                 <ol>
-                    <li class="active" data-title="Mexique"  data-length="3:25"><a>Lyrics</a></li>
-                    <li data-title="La Lutte des Classes"    data-length="4:10"><a>Lyrics</a></li>
-                    <li data-title="Chauffeur de Corbillard" data-length="5:02"><a>Lyrics</a></li>
-                    <li data-title="Nomades"                 data-length="2:53"><a>Lyrics</a></li>
-                    <li data-title="Cicatrice du Soldat"     data-length="3:22"><a>Lyrics</a></li>
-                    <li data-title="Deception"               data-length="5:03"><a>Lyrics</a></li>
-                    <li data-title="Amis"                    data-length="4:21"><a>Lyrics</a></li>
+                    <li ng-repeat='track in album.tracks' ng-click="music.clickSong()"  data-length="{{track.duration | trackLength }}" data-stream="{{track.streaming_url}}">{{track.title}}<a class="lyrics">Lyrics</a></li>
                 </ol>
             </section>
         </div>
@@ -74,6 +68,13 @@
             <h1>Links</h1>
         </div>
     </section>
+
+    <div id="music_player">
+        <div class="art"></div>
+        <i class="prev">PREV</i>
+        <i class="play">PLAY</i>
+        <i class="next">NEXT</i>
+    </div>
 
     <footer>
         <!-- footer goes here -->
