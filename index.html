@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/waypoints.min.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/controllers.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
@@ -28,24 +26,15 @@
         <a data-sect="links" href="/links/">Links</a>
     </nav>
 
-    <section ng-app="ls-music" id="music">
-        <div ng-controller="MusicCtrl as music" class="inner-wrapper">
+    <section id="music">
+        <div class="inner-wrapper">
             <h1>Music</h1>
-            <nav>
-                <a ng-repeat='(id, album) in music.albums' ng-class="{ active:music.tab === id }" ng-click="music.tab = id"  title="{{album.title}}" bg-img="{{album.small_art_url}}"></a>
-            </nav>
-            <section ng-repeat='(id, album) in music.albums' ng-show="music.tab === id" id="{{id}}">
-                <a href="{{album.large_art_url}}" bg-img="{{album.large_art_url}}"></a>
-                
-                <h1>{{album.title}} <span class="year">({{ album.release_date * 1000 | date : 'yyyy' }})</span></h1>
-                <ol>
-                    <li ng-repeat='track in album.tracks' ng-click="music.clickSong()"  data-length="{{track.duration | trackLength }}" data-stream="{{track.streaming_url}}">{{track.title}}<a class="lyrics">Lyrics</a></li>
-                </ol>
-            </section>
+            <iframe style="width: 40.4rem; height: 50.4rem; margin-right: 3rem;" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/45049914&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+            <iframe style="width: 40.4rem; height: 50.4rem;" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/942098&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
         </div>
     </section>
 
-    <section id="dates">
+<!--     <section id="dates">
         <div class="inner-wrapper">
             <h1>Dates</h1>
         </div>
@@ -67,17 +56,12 @@
         <div class="inner-wrapper">
             <h1>Links</h1>
         </div>
-    </section>
-
-    <div id="music_player">
-        <div class="art"></div>
-        <i class="prev">PREV</i>
-        <i class="play">PLAY</i>
-        <i class="next">NEXT</i>
-    </div>
+    </section> -->
 
     <footer>
-        <!-- footer goes here -->
+        <a href='https://www.facebook.com/lessages'>Facebook</a>
+        <a href='https://twitter.com/LesSages'>Twitter</a>
+        <a href='https://www.youtube.com/user/lessagestv'>YouTube</a>
     </footer>
 </body>
 </html>

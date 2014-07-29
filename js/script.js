@@ -51,6 +51,14 @@ $(function() {
             scrollTop: $('#' + $(this).attr('data-sect')).offset().top
         }, 1000, function(){ isNavClick = false; });
     });
+
+    $('#music nav a').click(function(event){
+        event.preventDefault();
+        $('#music nav a, #music section').removeClass('active');
+        $(this).addClass('active');
+        $('#music section' + $(this).attr('href')).addClass('active');
+        console.log($(this));
+    });
 });
 
 function placeNav(){
