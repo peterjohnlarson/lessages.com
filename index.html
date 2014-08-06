@@ -6,11 +6,12 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/albums.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/waypoints.min.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/controllers.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/rivets.min.js"></script>
+    <script type="text/javascript" src="js/nav.js"></script>
+    <script type="text/javascript" src="js/controller.js"></script>
 </head>
 <body>
     <header>
@@ -28,13 +29,13 @@
         <a data-sect="links" href="/links/">Links</a>
     </nav>
 
-    <section ng-app="ls-music" id="music">
-        <div ng-controller="MusicCtrl as music" class="inner-wrapper">
+    <section id="music">
+        <div class="inner-wrapper">
             <h1>Music</h1>
             <nav>
-                <a ng-repeat='(id, album) in music.albums' ng-class="{ active:music.tab === id }" ng-click="music.tab = id"  title="{{album.title}}" bg-img="{{album.small_art_url}}"></a>
+                <a rv-each-album="albums" title="{{album.title}}"></a>
             </nav>
-            <section ng-repeat='(id, album) in music.albums' ng-show="music.tab === id" id="{{id}}">
+            <section rv-each-album="albums">
                 <a href="{{album.large_art_url}}" bg-img="{{album.large_art_url}}"></a>
                 
                 <h1>{{album.title}} <span class="year">({{ album.release_date * 1000 | date : 'yyyy' }})</span></h1>

@@ -14,10 +14,10 @@ for id in album_ids:
         album['large_art_url'] = album['large_art_url'][:-5] + '5.jpg'
         if album['tracks'][-1]['title'].startswith('Album Preview:'):
             del album['tracks'][-1]
-        albums.append((id, album))
+        albums.append(album)
     else:
         raise Exception('Unable to reach server.')
 
-file = open("albums.json", "w")
-file.write(json.dumps(OrderedDict(albums)))
+file = open("albums.js", "w")
+file.write('var albums = ' + json.dumps(albums))
 file.close()
