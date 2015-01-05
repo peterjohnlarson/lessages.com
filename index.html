@@ -6,12 +6,15 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/albums.js"></script>
+    <!-- libraries -->
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/waypoints.min.js"></script>
+    <script type="text/javascript" src="js/moment.min.js"></script>
     <script type="text/javascript" src="js/rivets.min.js"></script>
+    <!-- custom scripts -->
     <script type="text/javascript" src="js/nav.js"></script>
-    <script type="text/javascript" src="js/controller.js"></script>
+    <script type="text/javascript" src="js/albums.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
 </head>
 <body>
     <header>
@@ -33,20 +36,20 @@
         <div class="inner-wrapper">
             <h1>Music</h1>
             <nav>
-                <a rv-each-album="albums" title="{{album.title}}"></a>
+                <a rv-each-album="albums" rv-class-active="config.selected | equals {{ album.album_id }}" rv-bg-img="album.small_art_url" rv-title="album.title"></a>
             </nav>
-            <section rv-each-album="albums">
-                <a href="{{album.large_art_url}}" bg-img="{{album.large_art_url}}"></a>
+            <section rv-each-album="albums" rv-id='album.album_id'>
+                <a rv-href="album.large_art_url" rv-bg-img="album.large_art_url"></a>
                 
-                <h1>{{album.title}} <span class="year">({{ album.release_date * 1000 | date : 'yyyy' }})</span></h1>
+                <h1>{{ album.title }} <span class="year">({{ album.release_date | date }})</span></h1>
                 <ol>
-                    <li ng-repeat='track in album.tracks' ng-click="music.clickSong()"  data-length="{{track.duration | trackLength }}" data-stream="{{track.streaming_url}}">{{track.title}}<a class="lyrics">Lyrics</a></li>
+                    <li rv-each-track='album.tracks'  rv-data-length="track.duration | trackLength" rv-data-stream="track.streaming_url">{{ track.title }}<a class="lyrics">Lyrics</a></li>
                 </ol>
             </section>
         </div>
     </section>
 
-    <section id="dates">
+    <section class='active' id="dates">
         <div class="inner-wrapper">
             <h1>Dates</h1>
         </div>

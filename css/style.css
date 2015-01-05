@@ -144,6 +144,7 @@ body > section {
       margin-left: 14.8rem;
       position: relative;
       text-transform: uppercase;
+      display: none;
       padding: 0.5rem 0 0 44.4rem; }
       #music .inner-wrapper > section > a {
         display: block;

@@ -1,46 +1,32 @@
-!function(){
-    var app = angular.module('ls-music', []);
+// Configure Rivets
+rivets.configure({
+    templateDelimiters: ['{{', '}}']
+});
 
-    app.filter('makeUppercase', function () {
-        return function (item) {
-            return item.toUpperCase();
-        };
+// Bind Views
+$(function(){
+    rivets.bind($('#music'), {
+        config: { selected: albums[0].album_id },
+        albums: albums
     });
+});
 
-    app.filter('trackLength', function () {
-        return function (input) {
-            var rounded = Math.round(input);
-            var min = Math.floor(rounded/60).toString();
-            var sec = Math.round(rounded % 60).toString();
-            if (sec.length === 1) sec = '0' + sec;
-            return min + ':' + sec;
-        };
+// Custom Binders
+rivets.binders['bg-img'] = function(el, value) {
+    $(el).css({
+        'background-image': 'url(' + value + ')'
     });
+};
 
-    app.filter('makeUppercase', function () {
-      return function (item) {
-        return item.toUpperCase();
-      };
-    });
-    app.controller(
-        'MusicCtrl', [ '$http', function ($http) {
-            var music = this;
-            music.albums = {};
-            $http.get('js/albums.json').success(function (data) {
-                music.albums = data;
-                music.tab = Object.keys(data)[1];
-            });
-        }]
-    );
+// Custom Formatters
+rivets.formatters.trackLength = function(input){
+    var rounded = Math.round(input);
+    var min = Math.floor(rounded/60).toString();
+    var sec = Math.round(rounded % 60).toString();
+    if (sec.length === 1) sec = '0' + sec;
+    return min + ':' + sec;
+};
 
-    app.directive('bgImg', function(){
-        return function(scope, element, attrs){
-            attrs.$observe('bgImg', function(value) {
-                element.css({
-                    'background-image': 'url(' + value + ')'
-                });
-            });
-        };
-    });
-
-}();
+rivets.formatters.date = function(value){
+    return moment.unix(parseInt(value)).format('YYYY');
+};
