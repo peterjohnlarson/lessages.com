@@ -44,6 +44,11 @@ body {
       margin-top: 2.2rem;
       margin-bottom: 0rem;
       letter-spacing: .5rem; }
+    @media screen and (max-width: 920px) {
+      body > header h1 {
+        font-size: 7rem;
+        line-height: 8.4rem;
+        margin: 0 2rem; } }
   body > a.continue {
     display: block;
     height: 5rem;
@@ -207,6 +212,20 @@ body > section {
             position: absolute;
             right: 0.7rem;
             color: rgba(48, 46, 68, 0.3); }
+  @media screen and (max-width: 920px) {
+    #music {
+      height: auto;
+      padding-top: 6.0rem; }
+      #music .inner-wrapper {
+        position: static;
+        margin: 0;
+        top: auto;
+        left: auto;
+        width: auto; }
+        #music .inner-wrapper iframe {
+          display: block;
+          margin: 0 auto 4rem !important;
+          max-width: 100%; } }
 
 footer {
   background: rgba(73, 168, 127, 0.9);
@@ -233,3 +252,13 @@ footer {
     footer a:last-child:after {
       content: none;
       margin-right: 0; }
+  @media screen and (max-width: 920px) {
+    footer {
+      padding: 4rem 0 2.5rem; }
+      footer a {
+        display: block;
+        margin: 0 0 1rem; }
+      footer a:hover {
+        border: none; }
+      footer a:after {
+        display: none; } }
